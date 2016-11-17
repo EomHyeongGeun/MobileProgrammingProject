@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <!-- oneshot = true면 한번만 false 면 무한반복 -->
+    <item android:drawable="@drawable/healthmate_one"
+        android:duration="75"/>
+    <item android:drawable="@drawable/healthmate_two"
+        android:duration="75"/>
+    <item android:drawable="@drawable/healthmate_three"
+        android:duration="75"/>
+    <item android:drawable="@drawable/healthmate_four"
+        android:duration="75"/>
+    <item android:drawable="@drawable/healthmate_five"
+        android:duration="75"/>
+    <item android:drawable="@drawable/healthmate_six"
+        android:duration="75"/>
+    <item android:drawable="@drawable/healthmate_seven"
+        android:duration="75"/>
+    <item android:drawable="@drawable/healthmate_eight"
+        android:duration="75"/>
+    <item android:drawable="@drawable/healthmate_nine"
+        android:duration="75"/>
+    <item android:drawable="@drawable/healthmate_ten"
+        android:duration="75"/>
+
+</animation-list>

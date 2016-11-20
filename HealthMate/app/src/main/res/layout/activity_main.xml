@@ -71,6 +71,7 @@
                     android:orientation="vertical"
                     android:background="@drawable/radius1"
                     android:layout_margin="10dp"
+                    android:onClick="goToTimeTable"
                     android:layout_weight="1">
                     <ImageView
                         android:layout_width="match_parent"
@@ -95,6 +96,7 @@
                     android:orientation="vertical"
                     android:background="@drawable/radius2"
                     android:layout_margin="10dp"
+                    android:onClick="goToBodyRecord"
                     android:layout_weight="1">
                     <ImageView
                         android:layout_width="match_parent"
@@ -114,6 +116,7 @@
                         android:text="BodyRecord"/>
                 </LinearLayout>
             </LinearLayout>
+
             <!-- 하단 두개 -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -126,6 +129,7 @@
                     android:orientation="vertical"
                     android:background="@drawable/radius3"
                     android:layout_margin="10dp"
+                    android:onClick="goToHowToDo"
                     android:layout_weight="1">
                     <ImageView
                         android:layout_width="match_parent"
@@ -149,6 +153,7 @@
                     android:orientation="vertical"
                     android:background="@drawable/radius4"
                     android:layout_margin="10dp"
+                    android:onClick="goToPedometer"
                     android:layout_weight="1">
                     <ImageView
                         android:layout_width="match_parent"

@@ -25,9 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".PedometerActivity"/>
         <activity android:name=".BodyRecordActivity"/>
         <activity android:name=".HowToDoActivity"/>
-        <activity android:name=".PedometerActivity"/>
         <activity android:name=".TimeTableActivity"/>
     </application>
 

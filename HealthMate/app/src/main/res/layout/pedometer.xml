@@ -6,56 +6,131 @@
     android:orientation="vertical"
     tools:context="my.kmu.com.navigationdrawerrrrr.PedometerActivity">
 
-    <TextView
-        android:id="@+id/tv01"
-        android:layout_marginTop="50dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:paddingLeft="30dp"
-        android:textColor="#f15353"
-        android:text="오늘의 목표량"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/tv01"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:paddingLeft="30dp"
+            android:textColor="#f15353"
+            android:typeface="monospace"
+            android:text="오늘의 목표량"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:typeface="monospace"
+            android:text="9 9 9 9 걸음"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/tv02"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:paddingLeft="30dp"
+            android:textColor="#f15353"
+            android:typeface="monospace"
+            android:text="오늘 얼만큼 걸었지??"/>
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:typeface="monospace"
+            android:text="0걸음" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/tv03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textSize="30dp"
+            android:paddingLeft="30dp"
+            android:textColor="#f15353"
+            android:typeface="monospace"
+            android:text="얼마나 더 걸어야 될까?!"/>
+
+        <TextView
+            android:id="@+id/tv_remain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:typeface="monospace"
+            android:text="9 9 9 9걸음"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/walk_one"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/walk_two"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/walk_three"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/walk_four"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/walk_five"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/walk_six"
+            android:layout_weight="1"/>
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ed9e27"
+        android:textStyle="italic"
+        android:textColor="#ffffff"
+        android:textSize="12dp"
         android:gravity="center"
-        android:text="9 9 9 9 걸음"/>
-
-    <TextView
-        android:id="@+id/tv02"
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:paddingLeft="30dp"
-        android:textColor="#f15353"
-        android:text="오늘 얼만큼 걸었지??"/>
-
-    <TextView
-        android:id="@+id/tv_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:text="0걸음" />
-
-    <TextView
-        android:id="@+id/tv03"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textSize="30dp"
-        android:paddingLeft="30dp"
-        android:textColor="#f15353"
-        android:text="얼마나 더 걸어야 될까?!"/>
-
-    <TextView
-        android:id="@+id/tv_remain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:text="9 9 9 9걸음"/>
+        android:text="Made by 20133236 EomHyeongGeun"/>
 </LinearLayout>

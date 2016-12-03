@@ -3,7 +3,6 @@ package my.kmu.com.navigationdrawerrrrr;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 /**
  * Created by eomhyeong-geun on 2016. 11. 30..

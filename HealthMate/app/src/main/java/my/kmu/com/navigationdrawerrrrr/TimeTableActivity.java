@@ -26,7 +26,7 @@ public class TimeTableActivity extends Activity {
     Calendar cal = new GregorianCalendar();
     MyDB mydb;
     SQLiteDatabase sqlite;
-    String today_goal;
+    String sun_str, mon_str, tue_str, wed_str, thu_str, fri_str, sat_str; // 각 day_goal 의 textView에 들어갈 String
     String sql_goal;    // getGoal에서 쓰일 String
     String sql_dialog;  // createDialogBox에서 쓰일 String
     String difficulty;  // 난이도 표시용
@@ -127,19 +127,19 @@ public class TimeTableActivity extends Activity {
 
 
         getGoal(1);
-        sunday_goal.setText(today_goal);
+        sunday_goal.setText(sun_str);
         getGoal(2);
-        monday_goal.setText(today_goal);
+        monday_goal.setText(mon_str);
         getGoal(3);
-        tuesday_goal.setText(today_goal);
+        tuesday_goal.setText(tue_str);
         getGoal(4);
-        wednesday_goal.setText(today_goal);
+        wednesday_goal.setText(wed_str);
         getGoal(5);
-        thursday_goal.setText(today_goal);
+        thursday_goal.setText(thu_str);
         getGoal(6);
-        friday_goal.setText(today_goal);
+        friday_goal.setText(fri_str);
         getGoal(7);
-        saturday_goal.setText(today_goal);
+        saturday_goal.setText(sat_str);
 
 
         getDate();
@@ -185,8 +185,34 @@ public class TimeTableActivity extends Activity {
             else if(Integer.parseInt(cursor.getString(0))==3) {
                 difficulty ="하";
             }
-            today_goal = difficulty + "\n\n" + cursor.getString(1) + "\n\n" + cursor.getString(2) + "\n\n" + cursor.getString(3)
-                    + "\n\n" + cursor.getString(4) + "\n\n" + cursor.getString(5) + "\n\n" + cursor.getString(6);
+            if(dayOfWeek == 1) {
+                sun_str = difficulty + "\n\n" + cursor.getString(1) + "\n\n" + cursor.getString(2) + "\n\n" + cursor.getString(3)
+                        + "\n\n" + cursor.getString(4) + "\n\n" + cursor.getString(5) + "\n\n" + cursor.getString(6);
+            }
+            else if(dayOfWeek == 2){
+                mon_str = difficulty + "\n\n" + cursor.getString(1) + "\n\n" + cursor.getString(2) + "\n\n" + cursor.getString(3)
+                        + "\n\n" + cursor.getString(4) + "\n\n" + cursor.getString(5) + "\n\n" + cursor.getString(6);
+            }
+            else if(dayOfWeek == 3){
+                tue_str = difficulty + "\n\n" + cursor.getString(1) + "\n\n" + cursor.getString(2) + "\n\n" + cursor.getString(3)
+                        + "\n\n" + cursor.getString(4) + "\n\n" + cursor.getString(5) + "\n\n" + cursor.getString(6);
+            }
+            else if(dayOfWeek == 4){
+                wed_str = difficulty + "\n\n" + cursor.getString(1) + "\n\n" + cursor.getString(2) + "\n\n" + cursor.getString(3)
+                        + "\n\n" + cursor.getString(4) + "\n\n" + cursor.getString(5) + "\n\n" + cursor.getString(6);
+            }
+            else if(dayOfWeek == 5){
+                thu_str = difficulty + "\n\n" + cursor.getString(1) + "\n\n" + cursor.getString(2) + "\n\n" + cursor.getString(3)
+                        + "\n\n" + cursor.getString(4) + "\n\n" + cursor.getString(5) + "\n\n" + cursor.getString(6);
+            }
+            else if(dayOfWeek == 6){
+                fri_str = difficulty + "\n\n" + cursor.getString(1) + "\n\n" + cursor.getString(2) + "\n\n" + cursor.getString(3)
+                        + "\n\n" + cursor.getString(4) + "\n\n" + cursor.getString(5) + "\n\n" + cursor.getString(6);
+            }
+            else if(dayOfWeek == 7){
+                sat_str = difficulty + "\n\n" + cursor.getString(1) + "\n\n" + cursor.getString(2) + "\n\n" + cursor.getString(3)
+                        + "\n\n" + cursor.getString(4) + "\n\n" + cursor.getString(5) + "\n\n" + cursor.getString(6);
+            }
         }
         cursor.close();
         sqlite.close();
@@ -197,7 +223,7 @@ public class TimeTableActivity extends Activity {
         int day = cal.get(Calendar.DAY_OF_MONTH)+1;
         int month = cal.get(Calendar.MONTH)+1;
         int year = cal.get(Calendar.YEAR);
-        today_date.setText(year + "년 " + month + "월 " + day + "일 ");
+        today_date.setText(year + "년 " + month + "월 " + (day-1) + "일 ");
 
         int week  = cal.get(Calendar.DAY_OF_WEEK);
         int count = -week;    // 무슨요일이냐에 따라 달력 출력이 달라지게 하기 위해

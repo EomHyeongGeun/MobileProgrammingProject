@@ -29,6 +29,7 @@
         <activity android:name=".BodyRecordActivity"/>
         <activity android:name=".HowToDoActivity"/>
         <activity android:name=".TimeTableActivity"/>
+        <activity android:name=".UploadActivity"/>
     </application>
 
 </manifest>

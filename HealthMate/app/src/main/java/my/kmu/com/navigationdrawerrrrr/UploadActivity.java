@@ -127,6 +127,7 @@ public class UploadActivity extends Activity {
                 intent.putExtra("scale", true);
                 intent.putExtra("return-data", true);
                 startActivityForResult(intent, CROP_FROM_IMAGE); // CROP_FROM_IMAGE case문으로 이동
+                break;
             }
             case CROP_FROM_IMAGE:
             {

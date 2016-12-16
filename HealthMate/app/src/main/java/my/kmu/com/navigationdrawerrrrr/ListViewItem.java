@@ -9,7 +9,7 @@ import android.graphics.drawable.Drawable;
 public class ListViewItem {
     private String titleStr;
     private String dateStr;
-    private Drawable pictureImg;
+    private String pictureImg;
     private int idNum;
 
     public void setIdNum(int id){
@@ -21,7 +21,7 @@ public class ListViewItem {
     public void setDate(String date) {
         dateStr = date ;
     }
-    public void setPicture(Drawable picture){
+    public void setPicture(String picture){
         pictureImg = picture;
     }
 
@@ -34,7 +34,7 @@ public class ListViewItem {
     public String getDate(){
         return this.dateStr;
     }
-    public Drawable getPicture(){
+    public String getPicture(){
         return this.pictureImg;
     }
 }

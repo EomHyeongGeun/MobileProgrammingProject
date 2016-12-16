@@ -1,10 +1,14 @@
 package my.kmu.com.navigationdrawerrrrr;
 
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.icu.util.Calendar;
+import android.icu.util.GregorianCalendar;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.view.View;
@@ -16,9 +20,16 @@ import android.view.Window;
  */
 
 public class PedometerActivity extends Activity implements SensorEventListener {
+    MyDB myDB;
+    SQLiteDatabase sqLiteDatabase;
+    int dayOfWeek;
+
     public static int cnt = 0;
 
-    private TextView tv_count, tv_remain;
+    private TextView tv_count, tv_remain, tv_goal;
+    Calendar cal = new GregorianCalendar();
+    String sql_goal;
+    String goal_str;
 
     private long lastTime;
     private float speed;
@@ -43,7 +54,41 @@ public class PedometerActivity extends Activity implements SensorEventListener {
 
         tv_count = (TextView)findViewById(R.id.tv_count);
         tv_remain= (TextView)findViewById(R.id.tv_remain);
+        tv_goal  = (TextView)findViewById(R.id.tv_goal);
+
+        // 무슨 요일인지에 따라 데이터베이스로부터 TimeTable.class에서 생성한 오늘 걸어야 할 양 받아오기
+        myDB = new MyDB(this);
+        sqLiteDatabase = myDB.getReadableDatabase();
+        dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        if (dayOfWeek == 1) {
+            sql_goal = "SELECT * FROM goalone";
+        } else if (dayOfWeek == 2) {
+            sql_goal = "SELECT * FROM goaltwo";
+        } else if (dayOfWeek == 3) {
+            sql_goal = "SELECT * FROM goalthree";
+        } else if (dayOfWeek == 4) {
+            sql_goal = "SELECT * FROM goalfour";
+        } else if (dayOfWeek == 5) {
+            sql_goal = "SELECT * FROM goalfive";
+        } else if (dayOfWeek == 6) {
+            sql_goal = "SELECT * FROM goalsix";
+        } else if (dayOfWeek == 7) {
+            sql_goal = "SELECT * FROM goalseven";
+        }
+
+        Cursor cursor = sqLiteDatabase.rawQuery(sql_goal, null);
+        while (cursor.moveToNext()) {
+                goal_str =  cursor.getString(6);
+        }
+
+        tv_goal.setText(goal_str+" 걸음");
+        tv_remain.setText(goal_str+" 걸음");
+        cursor.close();
+        sqLiteDatabase.close();
+        // 목표량 받아오기 끝
+
     }
+
 
     @Override
     public void onStart() {
@@ -75,7 +120,7 @@ public class PedometerActivity extends Activity implements SensorEventListener {
 
                 if (speed > SHAKE_THRESHOLD) {
                     tv_count.setText("" + (++cnt) + "걸음");
-                    tv_remain.setText("" +(9999-cnt) + "걸음");
+                    tv_remain.setText("" +(Integer.parseInt(goal_str)-cnt) + "걸음");
 
                 }
 

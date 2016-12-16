@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
+/*
  * Created by eomhyeong-geun on 2016. 11. 20..
  */
 

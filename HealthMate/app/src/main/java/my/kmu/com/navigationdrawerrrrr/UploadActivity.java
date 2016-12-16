@@ -1,19 +1,28 @@
 package my.kmu.com.navigationdrawerrrrr;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.icu.util.Calendar;
+import android.icu.util.GregorianCalendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -27,20 +36,83 @@ public class UploadActivity extends Activity {
     private static final int PICK_FROM_CAMERA = 0;
     private static final int PICK_FROM_ALBUM = 1;
     private static final int CROP_FROM_IMAGE = 2;
+    private static final int MY_PERMISSIONS_REQUEST_READ_EXT_STORAGE = 1;
 
     private int id_view;
     private ImageView iv_UserPhoto;
     private Uri mlmageCaptureUri;
     private String absolutePath;
+    private String photo_uri;
+    private Uri myUri;
+    private String date;
+    String filePath;
+
+    MyDB myDB;
+    SQLiteDatabase sqLiteDatabase;
+    EditText edit_context;
+    Calendar cal = new GregorianCalendar();
+
+    Button btn_agreeJoin, btn_signUpFinish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upload_layout);
 
-        iv_UserPhoto = (ImageView)findViewById(R.id.user_image);
-        Button btn_agreeJoin = (Button)findViewById(R.id.btn_UploadPicture);
+        iv_UserPhoto     = (ImageView)findViewById(R.id.user_image);
+        btn_agreeJoin    = (Button)findViewById(R.id.btn_UploadPicture);
+        btn_signUpFinish = (Button)findViewById(R.id.btn_signupfinish);
+        edit_context     = (EditText)findViewById(R.id.edit_context);
 
+        myDB = new MyDB(this);
+
+        // 게시물 올리기 버튼
+        btn_signUpFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestReadExternalStoragePermission();
+
+                sqLiteDatabase = myDB.getWritableDatabase();
+                // 오늘 날짜 받아오기
+                int day = cal.get(Calendar.DAY_OF_MONTH)+1;
+                int month = cal.get(Calendar.MONTH)+1;
+                int year = cal.get(Calendar.YEAR);
+                date = year + "/" + month + "/" + (day-1);
+
+                String insert_str = "INSERT INTO photolist(context, date, photo_url) " +
+                        "VALUES('" + edit_context.getText() + "', '" + date + "', '" +  mlmageCaptureUri.toString()+ "');";
+                Toast.makeText(getApplicationContext(),mlmageCaptureUri.toString() , Toast.LENGTH_SHORT).show();
+                sqLiteDatabase.execSQL(insert_str);
+                sqLiteDatabase.close();
+                
+            }
+        });
+
+    }
+
+    // Android sdk23 이상부터 수동으로 권한을 줘야합니다.
+    private void requestReadExternalStoragePermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_READ_EXT_STORAGE);
+                // MY_PERMISSIONS_REQUEST_READ_EXT_STORAGE is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
     }
 
     public void pictureClick(View v){
@@ -126,7 +198,11 @@ public class UploadActivity extends Activity {
                 intent.putExtra("aspectX", 1); // CROP박스의 y축 비율
                 intent.putExtra("scale", true);
                 intent.putExtra("return-data", true);
+
                 startActivityForResult(intent, CROP_FROM_IMAGE); // CROP_FROM_IMAGE case문으로 이동
+
+
+
                 break;
             }
             case CROP_FROM_IMAGE:
@@ -137,8 +213,9 @@ public class UploadActivity extends Activity {
                 }
 
                 final Bundle extras = data.getExtras();
+
                 //Crop된 이미지를 저장하기 위한 File 경로
-                String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()
+                filePath = Environment.getExternalStorageDirectory().getAbsolutePath()
                         +"/HealthMate/" + System.currentTimeMillis() + ".jpg";
 
                 if(extras != null){

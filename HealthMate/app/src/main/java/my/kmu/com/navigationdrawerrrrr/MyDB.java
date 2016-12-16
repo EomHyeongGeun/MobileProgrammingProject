@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDB extends SQLiteOpenHelper {
 
-
     public MyDB(Context context) {
         super(context, "myDB", null, 1);    // 1번 버전으로 만들겠다.
     }
@@ -89,6 +88,13 @@ public class MyDB extends SQLiteOpenHelper {
                     ");";
             db.execSQL(sql);
 
+        // BodyRecord의 list item에 사용할 DB
+            sql = "CREATE TABLE IF NOT EXISTS photolist"+
+                    "(_id INTEGER PRIMARY KEY AUTOINCREMENT" +
+                    ", context TEXT, date TEXT, photo_url TEXT);";
+            db.execSQL(sql);
+
+
     }
 
     @Override
@@ -106,6 +112,8 @@ public class MyDB extends SQLiteOpenHelper {
         sql = "DROP TABLE IF EXISTS goalsix";
         db.execSQL(sql);
         sql = "DROP TABLE IF EXISTS goalseven";
+        db.execSQL(sql);
+        sql = "DROP TABLE IF EXISTS photolist";
         db.execSQL(sql);
         onCreate(db);   // 다시 생성을 해줘야됨.
     }

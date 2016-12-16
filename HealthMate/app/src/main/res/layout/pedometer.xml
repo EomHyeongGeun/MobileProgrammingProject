@@ -23,12 +23,13 @@
             android:text="오늘의 목표량"/>
 
         <TextView
+            android:id="@+id/tv_goal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30dp"
             android:gravity="center"
             android:typeface="monospace"
-            android:text="9 9 9 9 걸음"/>
+            android:text="TimeTable에서 목표량을 설정해주세요."/>
     </LinearLayout>
 
 
@@ -81,7 +82,7 @@
             android:gravity="center"
             android:textSize="30dp"
             android:typeface="monospace"
-            android:text="9 9 9 9걸음"/>
+            android:text="목표량을 설정해주세요."/>
     </LinearLayout>
 
 

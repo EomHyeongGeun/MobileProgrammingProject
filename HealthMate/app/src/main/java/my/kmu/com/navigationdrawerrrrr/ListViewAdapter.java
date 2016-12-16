@@ -2,6 +2,7 @@ package my.kmu.com.navigationdrawerrrrr;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         ListViewItem listViewItem = listViewItemList.get(position);
 
-        pictureImg.setImageDrawable(listViewItem.getPicture());
+        pictureImg.setImageURI(Uri.parse(listViewItem.getPicture()));
         idText.setText(listViewItem.getIdNum()+"");
         titleText.setText(listViewItem.getTitle());
         dateText.setText(listViewItem.getDate());
@@ -56,7 +57,7 @@ public class ListViewAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-    public void addItem(int id, String title, String date, Drawable picture) {
+    public void addItem(int id, String title, String date, String picture) {
         ListViewItem item = new ListViewItem();
 
         item.setIdNum(id);

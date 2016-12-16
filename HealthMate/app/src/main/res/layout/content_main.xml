@@ -27,7 +27,7 @@
             android:textColor="#ffffff"
             android:typeface="monospace"
             android:textSize="20dp"
-            android:text=" 오늘의 목표량 !! \n 팔굽혀펴기 : 50회 \n 걷기 : 3km\n 턱걸이 : 30개\n 윗몸일으키기 : 100개"/>
+            android:text="오늘의 목표량!"/>
 
         <!-- 홈 화면 메뉴 -->
         <LinearLayout

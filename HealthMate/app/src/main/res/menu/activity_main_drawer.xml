@@ -3,19 +3,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/navTimeTable"
             android:icon="@drawable/ic_menu_camera"
             android:title="TimeTable" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/navBodyRecord"
             android:icon="@drawable/ic_menu_gallery"
             android:title="BodyRecord" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/navHowToDo"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="HowToDo" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/navPedometer"
             android:icon="@drawable/ic_menu_manage"
             android:title="Pedometer" />
     </group>

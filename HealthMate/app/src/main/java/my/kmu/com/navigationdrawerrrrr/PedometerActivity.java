@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 
 /**
@@ -120,8 +121,14 @@ public class PedometerActivity extends Activity implements SensorEventListener {
 
                 if (speed > SHAKE_THRESHOLD) {
                     tv_count.setText("" + (++cnt) + "걸음");
-                    tv_remain.setText("" +(Integer.parseInt(goal_str)-cnt) + "걸음");
 
+                    // 목표량이 설정되지 않은 상태에서 pedometer 실행 시 목표량 설정해달라는 Toast와 함께 메인페이지로.
+                    try {
+                        tv_remain.setText("" + (Integer.parseInt(goal_str) - cnt) + "걸음");
+                    }catch (Exception e){
+                        finish();
+                        Toast.makeText(getApplicationContext(), "목표량을 설정해주세요!", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 lastX = event.values[DATA_X];

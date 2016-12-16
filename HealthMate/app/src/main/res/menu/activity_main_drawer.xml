@@ -5,19 +5,19 @@
         <item
             android:id="@+id/navTimeTable"
             android:icon="@drawable/ic_menu_camera"
-            android:title="TimeTable" />
+            android:title="시간표" />
         <item
             android:id="@+id/navBodyRecord"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="BodyRecord" />
+            android:title="몸의 변화" />
         <item
             android:id="@+id/navHowToDo"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="HowToDo" />
+            android:title="운동방법" />
         <item
             android:id="@+id/navPedometer"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Pedometer" />
+            android:title="만보계" />
     </group>
 
     <item android:title="Communicate">
@@ -25,11 +25,8 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Home" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Back" />
+                android:title="오늘의 날씨" />
+
         </menu>
     </item>
 

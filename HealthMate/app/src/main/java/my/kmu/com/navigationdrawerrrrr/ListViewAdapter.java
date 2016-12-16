@@ -20,10 +20,13 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>();
 
     public ListViewAdapter(){}
+
     @Override
     public int getCount() {
         return listViewItemList.size();
     }
+
+    // 리스트뷰 아이템들 변경
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
@@ -48,6 +51,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         return convertView;
     }
+
     @Override
     public Object getItem(int position) {
         return listViewItemList.get(position);
@@ -57,6 +61,7 @@ public class ListViewAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
     public void addItem(int id, String title, String date, String picture) {
         ListViewItem item = new ListViewItem();
 

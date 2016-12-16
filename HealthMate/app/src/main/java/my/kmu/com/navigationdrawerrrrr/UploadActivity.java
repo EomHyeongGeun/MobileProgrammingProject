@@ -33,6 +33,7 @@ import java.io.FileOutputStream;
  */
 
 public class UploadActivity extends Activity {
+
     private static final int PICK_FROM_CAMERA = 0;
     private static final int PICK_FROM_ALBUM = 1;
     private static final int CROP_FROM_IMAGE = 2;
@@ -42,8 +43,6 @@ public class UploadActivity extends Activity {
     private ImageView iv_UserPhoto;
     private Uri mlmageCaptureUri;
     private String absolutePath;
-    private String photo_uri;
-    private Uri myUri;
     private String date;
     String filePath;
 

@@ -1,11 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/nicebody"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/nicebody"/>
+    <TextView
+        android:id="@+id/shoulder1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="130dp"
+        android:onClick="click_body"
+        android:text=""/>
+    <TextView
+        android:id="@+id/shoulder2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="130dp"
+        android:onClick="click_body"
+        android:text=""/>
+    <TextView
+        android:id="@+id/chest"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="150dp"
+        android:onClick="click_body"
+        android:text=""/>
+    <TextView
+        android:id="@+id/arm1"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="220dp"
+        android:onClick="click_body"
+        android:text=""/>
+    <TextView
+        android:id="@+id/arm2"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="195dp"
+        android:onClick="click_body"
+        android:text=""/>
+    <TextView
+        android:id="@+id/abdominal"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="250dp"
+        android:onClick="click_body"
+        android:text=""/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:textSize="15dp"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="30dp"
+        android:textStyle="bold"
+        android:textColor="#ff0004"
+        android:text="자세한 운동법은 사진의 각 부위를 클릭해주세요!  \n ** 상체(어깨,가슴,팔)만 클릭해주세요^^ **"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ed9e27"
+        android:textStyle="italic"
         android:textColor="#ffffff"
+        android:textSize="12dp"
         android:gravity="center"
-        android:text="how to do layout"/>
-</LinearLayout>
+        android:text="Made by 20133236 EomHyeongGeun"/>
+</RelativeLayout>

@@ -27,8 +27,11 @@ public class MainActivity extends AppCompatActivity
     int dayOfWeek;
     String sql_goal;
     String goal_str;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+
 
         // 무슨 요일인지에 따라 데이터베이스로부터 TimeTable.class에서 생성한 오늘의 목표량 받아오기
         myDB = new MyDB(this);
@@ -80,8 +85,9 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-    }
+    }// onCreate 끝
 
+    // 네비게이션 바
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -92,35 +98,13 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_back) {
-            return true;
-        }
-        if (id == R.id.action_home) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
+    // 네비게이션 바 아이템 클릭시 각 액티비티로 이동
+    // nav_weather은 오늘의 날싸 보여주는 dialog
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.navTimeTable) {
@@ -136,15 +120,19 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(), PedometerActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            Intent intent = new Intent(getApplicationContext(), WeatherDialog.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
+
     // 메인화면에 있는 4가지 레이아웃 클릭시 해당 액티비티로 이동
     public void goToTimeTable(View v){
         Intent intent = new Intent(getApplicationContext(), TimeTableActivity.class);
@@ -162,5 +150,6 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(getApplicationContext(), BodyRecordActivity.class);
         startActivity(intent);
     }
+
 
 }

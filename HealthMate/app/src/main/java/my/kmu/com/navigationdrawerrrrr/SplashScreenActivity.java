@@ -25,31 +25,30 @@ public class SplashScreenActivity extends Activity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        // Get the view from splash_screen.xml
+        // splash_screen.xml으로부터 layout을 가져온다
         setContentView(R.layout.splash_screen);
 
-        // Play animation
+        // 애니메이션 실행
         ImageView imageView01 = (ImageView)findViewById(R.id.imageView01);
         final AnimationDrawable drawable = (AnimationDrawable)imageView01.getBackground();
         drawable.start();
 
 
-        // Create a Timer
+        // 타이머 생성
         Timer RunSplash = new Timer();
-        // Task to do when the timer ends
+        // 타이머 시간동안 실행
         TimerTask ShowSplash = new TimerTask() {
             @Override
             public void run() {
-                // Close SplashScreenActivity.class
+
                 finish();
 
-                // Start MainActivity.class
                 Intent myIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
                 startActivity(myIntent);
             }
         };
 
-        // Start the timer
+        // 타이머 시작
         RunSplash.schedule(ShowSplash, Delay);
     }
 }

@@ -218,6 +218,7 @@ public class TimeTableActivity extends Activity {
         sqlite.close();
     }
 
+    // 오늘의 날짜 기준으로 계산하여 만든 나만의 달력. - 일주일만 표시됩니다 -
     public void getDate(){
         Calendar calendar = Calendar.getInstance();
         int day = cal.get(Calendar.DAY_OF_MONTH)+1;
@@ -237,7 +238,7 @@ public class TimeTableActivity extends Activity {
         saturday.setText((day + count++) + "");
     }
 
-    // 운동 난이도에 따라 난수를 다르게 주어 각 운동의 횟수가 다르게 각 요일의 데이터베이스에 입력된다.
+    // 운동 난이도에 따라 난수를 다르게 주어 각 운동의 횟수가 다르게 각 요일의 데이터베이스에 입력했습니다.
     private AlertDialog createDialogBox(final int dayOfWeek){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
